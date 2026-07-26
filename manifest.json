@@ -22,10 +22,6 @@
     }
   },
 
-  "background": {
-    "service_worker": "background.js"
-  },
-
   "permissions": [
     "storage",
     "tabs"
