@@ -2,14 +2,14 @@ document.getElementById("addBtn").addEventListener("click", showAddCard);
 document.getElementById("exeAdd").addEventListener("click", exeAddApp);
 
 let url, name, hostName, subDomain;
+const card = document.querySelector(".addCard");
 
 function showAddCard(){
-    document.querySelector(".addCard").hidden = false ;
+    card.hidden = false;
 }
 function exeAddApp(){
     getAppURL();
-
-
+    card.hidden = true;
 }
 function getAppURL(){
     url = document.getElementById("url").value;
