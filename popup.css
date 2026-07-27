@@ -1,6 +1,22 @@
 html{
     width: 300px;
-    height: 250px;
+    min-height: 500px;
+}
+
+#addBtn{
+    cursor: pointer;
+}
+
+#exeAdd{
+    cursor: pointer;
+}
+
+.wrapper{
+    background: linear-gradient(135deg, darkblue,blue,skyblue, skyblue);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 500px;
 }
 
 .heading{
@@ -10,7 +26,8 @@ html{
 }
 
 .main{
-    display: inline-block;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
     text-align: center;
 }
 
