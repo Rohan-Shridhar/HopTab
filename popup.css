@@ -3,8 +3,11 @@ html{
     min-height: 500px;
 }
 
+#addBtn{
+    cursor: pointer;
+}
+
 .wrapper{
-    background: linear-gradient(135deg, red, blue, skyblue, skyblue, skyblue, skyblue, skyblue);
     border: 2px solid black;
     border-radius: 5px;
     padding: 5px;
