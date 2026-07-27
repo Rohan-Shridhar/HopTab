@@ -12,6 +12,8 @@ function exeAddApp(){
 function getAppURL(){
     let url = document.getElementById("url").value;
     console.log(url);
+    let name = document.getElementById("name").value;
+    console.log(name);
 }
 function addApp(){
     document.querySelector(".main").innerHTML += `<div class="app">

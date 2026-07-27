@@ -7,7 +7,12 @@ html{
     cursor: pointer;
 }
 
+#exeAdd{
+    cursor: pointer;
+}
+
 .wrapper{
+    background: linear-gradient(135deg, darkblue,blue,skyblue, skyblue);
     border: 2px solid black;
     border-radius: 5px;
     padding: 5px;
