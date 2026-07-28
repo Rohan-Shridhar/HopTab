@@ -24,8 +24,8 @@ function getAppURL(){
 function getAppIcon(){
     hostName = new URL(url).hostname;
     console.log(`Host: ${hostName}`);
-    subDomain = hostName.split(".")[0];
-    console.log(`Sub Domain: ${subDomain}`);
+
+    getSubdomain();
 
     let flag = 1;
     for(let i = 0; i<skillicons.length; i++){
@@ -38,6 +38,23 @@ function getAppIcon(){
         img = `https://www.google.com/s2/favicons?domain=${hostName}&sz=32`;
     }
     console.log(`App icon: ${img}`);
+}
+
+function getSubdomain(){
+    let flag = 1;
+    for(let i = 0; i<4; i++){
+        if(i<3 && hostName[i] !== "w"){
+            flag = 0;
+            break;
+        }
+    } 
+
+    if(flag == 1){
+        subDomain = hostName.split(".")[1];
+    }else{
+        subDomain = hostName.split(".")[0];
+    }
+    console.log(`Sub Domain: ${subDomain}`);
 }
 
 function addApp(){
