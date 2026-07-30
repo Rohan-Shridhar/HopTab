@@ -15,14 +15,7 @@ function loadApps() {
         const apps = result.apps || [];
 
         apps.forEach(app => {
-            document.querySelector(".main").innerHTML += `
-                <div class="app">
-                    <a href="${app.url}" target="_blank">
-                        <img src="${app.img}">
-                    </a>
-                    <p>${app.name}</p>
-                </div>
-            `;
+            addApp(app.url, app.name, app.img);
         });
     });
 }
@@ -41,7 +34,7 @@ function exeAddApp(){
         });
 
         chrome.storage.local.set({apps},() => {
-            addApp();
+            addApp(url, name, img);
             card.hidden = true;
         });
     });
@@ -89,7 +82,7 @@ function getSubdomain(){
     console.log(`Sub Domain: ${subDomain}`);
 }
 
-function addApp(){
+function addApp(url, name, img){
     document.querySelector(".main").innerHTML += `<div class="app">
                 <a href="${url}" target="_blank">
                     <img src="${img}">
