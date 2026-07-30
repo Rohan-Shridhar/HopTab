@@ -3,6 +3,7 @@ document.getElementById("addBtn").addEventListener("click", showAddCard);
 document.getElementById("exeAdd").addEventListener("click", exeAddApp);
 document.getElementById("delBtn").addEventListener("click", showDelCard);
 document.getElementById("exeDel").addEventListener("click", exeDelApp);
+document.getElementById("selectAll").checked = false;
 document.getElementById("close-1").addEventListener("click", cancelFunction);
 document.getElementById("close-2").addEventListener("click", cancelFunction);
 
@@ -36,6 +37,13 @@ function showDelCard(){
         });
     });
 }
+
+document.getElementById("selectAll").addEventListener("change", function () {
+    const checked = this.checked;
+
+    document.querySelectorAll("#deletelist input[type='checkbox']")
+        .forEach(cb => cb.checked = checked);
+});
 
 function cancelFunction(){
     card.hidden = true;
