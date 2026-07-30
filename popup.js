@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", loadApps);
 document.getElementById("addBtn").addEventListener("click", showAddCard);
 document.getElementById("exeAdd").addEventListener("click", exeAddApp);
 document.getElementById("delBtn").addEventListener("click", showDelCard);
+document.getElementById("close-1").addEventListener("click", cancelFunction);
+document.getElementById("close-2").addEventListener("click", cancelFunction);
 
 
 let url, name, hostName, subDomain, img;
@@ -11,10 +13,17 @@ const skillicons = ["ableton","activitypub","actix","adonis","ae","aiscript","al
 
 function showAddCard(){
     card.hidden = false;
+    remove.hidden = true;
 }
 
 function showDelCard(){
+    card.hidden = true;
     remove.hidden = false;
+}
+
+function cancelFunction(){
+    card.hidden = true;
+    remove.hidden= true;
 }
 
 function loadApps() {

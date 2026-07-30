@@ -31,7 +31,10 @@ html{
     border-radius: 5px;
     padding: 5px;
 }
-#close{
+#close-1{
+    cursor: pointer;
+}
+#close-2{
     cursor: pointer;
 }
 
