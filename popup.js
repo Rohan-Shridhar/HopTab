@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", loadApps);
 document.getElementById("addBtn").addEventListener("click", showAddCard);
 document.getElementById("exeAdd").addEventListener("click", exeAddApp);
 document.getElementById("delBtn").addEventListener("click", showDelCard);
+document.getElementById("exeDel").addEventListener("click", exeDelApp);
 document.getElementById("close-1").addEventListener("click", cancelFunction);
 document.getElementById("close-2").addEventListener("click", cancelFunction);
 
@@ -19,6 +20,21 @@ function showAddCard(){
 function showDelCard(){
     card.hidden = true;
     remove.hidden = false;
+    const deletelist = document.getElementById("deletelist");
+    deletelist.innerHTML = "";
+
+    chrome.storage.local.get(["apps"], (result) => {
+        const apps = result.apps || [];
+
+        apps.forEach((app, index) => {
+            deletelist.innerHTML += `
+                <label>
+                    <input type="checkbox" value="${index}">
+                    ${app.name}
+                </label><br>
+            `;
+        });
+    });
 }
 
 function cancelFunction(){
@@ -61,7 +77,6 @@ function getAppURL(){
     name = document.getElementById("name").value;
     console.log(`App name: ${name}`);
 }
-
 function getAppIcon(){
     hostName = new URL(url).hostname;
     console.log(`Host: ${hostName}`);
@@ -80,7 +95,6 @@ function getAppIcon(){
     }
     console.log(`App icon: ${img}`);
 }
-
 function getSubdomain(){
     let flag = 1;
     for(let i = 0; i<4; i++){
@@ -89,7 +103,6 @@ function getSubdomain(){
             break;
         }
     } 
-
     if(flag == 1){
         subDomain = hostName.split(".")[1];
     }else{
@@ -97,7 +110,6 @@ function getSubdomain(){
     }
     console.log(`Sub Domain: ${subDomain}`);
 }
-
 function addApp(url, name, img){
     document.querySelector(".main").innerHTML += `<div class="app">
                 <a href="${url}" target="_blank">
@@ -105,4 +117,21 @@ function addApp(url, name, img){
                 </a>
                 <p>${name}</p>
             </div>`;
+}
+
+function exeDelApp() {
+    chrome.storage.local.get(["apps"], (result) => {
+        let apps = result.apps || [];
+
+        const checked = [...document.querySelectorAll("#deletelist input:checked")]
+            .map(cb => Number(cb.value));
+
+        apps = apps.filter((_, index) => !checked.includes(index));
+
+        chrome.storage.local.set({ apps }, () => {
+            document.querySelector(".main").innerHTML = "";
+            loadApps();
+            remove.hidden = true;
+        });
+    });
 }
