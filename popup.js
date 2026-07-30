@@ -11,8 +11,21 @@ function showAddCard(){
 function exeAddApp(){
     getAppURL();
     getAppIcon();
-    addApp();
-    card.hidden = true;
+
+    chrome.storage.local.get(["apps"],(result) => {
+        const apps = result.apps || [];
+
+        apps.push({
+            url: url,
+            name: name,
+            img: img
+        });
+
+        chrome.storage.local.set({apps},() => {
+            addApp();
+            card.hidden = true;
+        });
+    });
 }
 function getAppURL(){
     url = document.getElementById("url").value;
