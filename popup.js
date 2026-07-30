@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", loadApps);
 document.getElementById("addBtn").addEventListener("click", showAddCard);
 document.getElementById("exeAdd").addEventListener("click", exeAddApp);
 
@@ -8,6 +9,24 @@ const skillicons = ["ableton","activitypub","actix","adonis","ae","aiscript","al
 function showAddCard(){
     card.hidden = false;
 }
+
+function loadApps() {
+    chrome.storage.local.get(["apps"], (result) => {
+        const apps = result.apps || [];
+
+        apps.forEach(app => {
+            document.querySelector(".main").innerHTML += `
+                <div class="app">
+                    <a href="${app.url}" target="_blank">
+                        <img src="${app.img}">
+                    </a>
+                    <p>${app.name}</p>
+                </div>
+            `;
+        });
+    });
+}
+
 function exeAddApp(){
     getAppURL();
     getAppIcon();
