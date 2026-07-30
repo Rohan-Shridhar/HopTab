@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", loadApps);
 document.getElementById("addBtn").addEventListener("click", showAddCard);
 document.getElementById("exeAdd").addEventListener("click", exeAddApp);
 
@@ -8,11 +9,35 @@ const skillicons = ["ableton","activitypub","actix","adonis","ae","aiscript","al
 function showAddCard(){
     card.hidden = false;
 }
+
+function loadApps() {
+    chrome.storage.local.get(["apps"], (result) => {
+        const apps = result.apps || [];
+
+        apps.forEach(app => {
+            addApp(app.url, app.name, app.img);
+        });
+    });
+}
+
 function exeAddApp(){
     getAppURL();
     getAppIcon();
-    addApp();
-    card.hidden = true;
+
+    chrome.storage.local.get(["apps"],(result) => {
+        const apps = result.apps || [];
+
+        apps.push({
+            url: url,
+            name: name,
+            img: img
+        });
+
+        chrome.storage.local.set({apps},() => {
+            addApp(url, name, img);
+            card.hidden = true;
+        });
+    });
 }
 function getAppURL(){
     url = document.getElementById("url").value;
@@ -57,7 +82,7 @@ function getSubdomain(){
     console.log(`Sub Domain: ${subDomain}`);
 }
 
-function addApp(){
+function addApp(url, name, img){
     document.querySelector(".main").innerHTML += `<div class="app">
                 <a href="${url}" target="_blank">
                     <img src="${img}">
