@@ -121,6 +121,11 @@ function getAppIcon(){
     }
     if(flag === 1){
         img = `https://www.google.com/s2/favicons?domain=${hostName}&sz=32`;
+        flag = 2;
+    }
+    
+    if(flag === 1){
+        img = `https://fonts.gstatic.com/s/i/materialicons/apps/v6/24px.svg`;
     }
     console.log(`App icon: ${img}`);
 }
