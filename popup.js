@@ -81,10 +81,31 @@ function exeAddApp(){
 }
 function getAppURL(){
     url = document.getElementById("url").value;
+    if(validateUrl(url) == 1){
+        if(url.length == 0){
+            console.log("URL not entered");
+        }else{
+            console.log(`Invalid url : ${url}`);
+        }
+        cancelFunction();
+        return 42;
+    }
     console.log(`URL: ${url}`);
     name = document.getElementById("name").value;
     console.log(`App name: ${name}`);
+
 }
+
+function validateUrl(url){
+    try{
+        new URL(url);
+        return 0;
+    }
+    catch{
+        return 1;
+    }
+}
+
 function getAppIcon(){
     hostName = new URL(url).hostname;
     console.log(`Host: ${hostName}`);
