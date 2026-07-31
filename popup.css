@@ -1,6 +1,8 @@
 html{
     width: 300px;
     min-height: 500px;
+    color: white;
+    background-color: grey;
 }
 
 .card{
@@ -39,7 +41,7 @@ html{
 }
 
 .wrapper{
-    background: linear-gradient(135deg, darkblue,blue,skyblue, skyblue);
+    background: black;
     border: 2px solid black;
     border-radius: 5px;
     padding: 5px;
