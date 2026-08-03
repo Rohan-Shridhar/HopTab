@@ -177,6 +177,7 @@ function updateTime(){
     const minutes = String(now.getMinutes()).padStart(2,"0");
 
     document.getElementById("time").textContent = `${hours}:${minutes}`;
+    document.getElementById("date").textContent = now.toDateString();
 }
 
 updateTime();
