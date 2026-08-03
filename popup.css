@@ -56,8 +56,21 @@ html{
     grid-template-columns: 2fr 1fr 2fr;
 }
 
+#today{
+    display: flex;
+    flex-direction: column;
+    padding: none;
+}
+
 #time{
     text-align: right;
+    margin: 0;
+}
+
+#date{
+    text-align: right;
+    font-size: small;
+    margin: 0;
 }
 
 .main{
