@@ -6,4 +6,8 @@ function showToast(message, status, duration = 3000){
     toast.textContent = messages[message];
     toast.className = statuses[status];
     toast.hidden = false;
+
+    setInterval(() => {
+        toast.hidden = true;
+    }, duration);
 }
