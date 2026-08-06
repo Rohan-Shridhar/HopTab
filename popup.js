@@ -64,20 +64,26 @@ function exeAddApp(){
     getAppURL();
     getAppIcon();
 
-    chrome.storage.local.get(["apps"],(result) => {
-        const apps = result.apps || [];
+    try{
+        chrome.storage.local.get(["apps"],(result) => {
+            const apps = result.apps || [];
 
-        apps.push({
-            url: url,
-            name: name,
-            img: img
-        });
+            apps.push({
+                url: url,
+                name: name,
+                img: img
+            });
 
-        chrome.storage.local.set({apps},() => {
-            addApp(url, name, img);
-            card.hidden = true;
+            chrome.storage.local.set({apps},() => {
+                addApp(url, name, img);
+                card.hidden = true;
+            });
         });
-    });
+        showToast(0,0);
+    }
+    catch{
+        showToast(2,1);
+    }
 }
 function getAppURL(){
     url = document.getElementById("url").value;
@@ -87,6 +93,7 @@ function getAppURL(){
         }else{
             console.log(`Invalid url : ${url}`);
         }
+        showToast(2,1);
         cancelFunction();
         return 42;
     }
@@ -154,20 +161,26 @@ function addApp(url, name, img){
 }
 
 function exeDelApp() {
-    chrome.storage.local.get(["apps"], (result) => {
-        let apps = result.apps || [];
+    try{
+        chrome.storage.local.get(["apps"], (result) => {
+            let apps = result.apps || [];
 
-        const checked = [...document.querySelectorAll("#deletelist input:checked")]
-            .map(cb => Number(cb.value));
+            const checked = [...document.querySelectorAll("#deletelist input:checked")]
+                .map(cb => Number(cb.value));
 
-        apps = apps.filter((_, index) => !checked.includes(index));
+            apps = apps.filter((_, index) => !checked.includes(index));
 
-        chrome.storage.local.set({ apps }, () => {
-            document.querySelector(".main").innerHTML = "";
-            loadApps();
-            remove.hidden = true;
+            chrome.storage.local.set({ apps }, () => {
+                document.querySelector(".main").innerHTML = "";
+                loadApps();
+                remove.hidden = true;
+            });
         });
-    });
+        showToast(1,0);
+    }
+    catch{
+        showToast(2,1);
+    }
 }
 
 function updateTime(){
