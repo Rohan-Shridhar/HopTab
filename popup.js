@@ -108,8 +108,13 @@ function getAppURL(){
     }
     console.log(`URL: ${url}`);
     name = document.getElementById("name").value;
+    if(name.length == 0){
+        name = new URL(url).hostname;
+    }
+    if(name.length > 15){
+        name = name.slice(0,12) + "...";
+    }
     console.log(`App name: ${name}`);
-
 }
 
 function validateUrl(url){
