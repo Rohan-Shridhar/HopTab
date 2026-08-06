@@ -83,3 +83,24 @@ html{
     width: 42px;
     height: 42px;
 }
+
+#toast{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.success{
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.failure{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
