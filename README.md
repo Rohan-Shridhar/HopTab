@@ -1,116 +1,106 @@
 # HopTab 🚀
 
-**Jump to your favorite websites and pages instantly from your browser.**
+**Jump to your favorite websites instantly from your browser.**
 
 A lightweight Chrome extension that lets you save, organize, and quick-access your most-used websites with beautiful favicons—all just one click away.
 
 ## ✨ Features
 
 - **One-Click Access** – Jump to your saved websites instantly from the extension popup
-- **Smart Favicon Detection** – Automatically fetches favicons using:
-  - Skill icons from [skillicons.dev](https://skillicons.dev) for popular tech stacks
-  - Google's favicon service for other websites
+- **Smart Favicon Detection** – Automatically fetches favicons using skill icons and Google's service
 - **Easy Management** – Add and remove shortcuts with an intuitive UI
 - **Persistent Storage** – Your bookmarks are saved locally using Chrome's storage API
 - **Bulk Delete** – Remove multiple shortcuts at once with checkboxes
-- **Beautiful UI** – Gradient blue design with a clean grid layout
+- **Beautiful UI** – Clean grid layout with smooth interactions
 
 ## 🛠️ Installation
 
 ### From Source
 
-1. Clone or download this repository
+1. Clone this repository
    ```bash
    git clone https://github.com/Rohan-Shridhar/HopTab.git
+   cd HopTab
    ```
 
 2. Open Chrome and navigate to `chrome://extensions/`
 
-3. Enable **Developer mode** (toggle in top-right corner)
+3. Enable **Developer mode** (toggle in the top-right corner)
 
 4. Click **Load unpacked** and select the HopTab folder
 
-5. The extension is now ready to use! Click the HopTab icon in your toolbar
-
+5. Done! Click the HopTab icon in your toolbar to start using it
 
 ## 📖 How to Use
 
-### Adding a Shortcut
-
+### Add a Shortcut
 1. Click the HopTab extension icon
-2. Click the **+ ADD** button
-3. Enter the URL and a title for your shortcut
-4. Click **GO** to save
-5. Your new shortcut appears in the grid
+2. Click **+ ADD**
+3. Enter the URL and title
+4. Click **GO**
 
-### Accessing Shortcuts
+### Access Shortcuts
+- Click any icon/tile in the popup to open that website in a new tab
 
-- Click any icon/tile in the HopTab popup to open that website in a new tab
-
-### Deleting Shortcuts
-
-1. Click the **- DEL** button
+### Delete Shortcuts
+1. Click **- DEL**
 2. Check the boxes next to shortcuts you want to remove
-3. Use **Select All** to remove all at once
-4. Click **GO** to confirm deletion
+3. Click **GO** to confirm
 
 ## 📁 Project Structure
 
 ```
 HopTab/
-├── manifest.json          # Chrome extension configuration
+├── manifest.json          # Extension config
 ├── popup.html             # Extension popup UI
-├── popup.css              # Styling for the popup
-├── popup.js               # Extension logic & event handlers
-├── icons/                 # Extension icons (16px, 32px, 48px, 128px)
+├── popup.css              # Popup styling
+├── popup.js               # Extension logic
+├── toast.js               # Toast notifications
+├── icons/                 # Extension icons
+├── index.html             # Landing page
+├── style.css              # Landing page styling
+├── script.js              # Landing page scripts
 ├── README.md              # This file
 └── LICENSE                # Apache 2.0 License
 ```
 
 ## 🔧 Technical Details
 
-- **Manifest Version:** 3 (Latest Chrome extension standard)
-- **Permissions:** 
-  - `storage` – Save bookmarks locally
-  - `tabs` – Open URLs in new tabs
+- **Manifest Version:** 3
+- **Permissions:** `storage`, `tabs`
 - **Storage:** Chrome Local Storage (no server needed)
-- **Dependencies:** None – vanilla JavaScript only
+- **Dependencies:** None – vanilla JavaScript
 
-## 🎨 UI Components
+## 💡 Tech Stack
 
-- **Gradient Background** – Beautiful blue gradient (darkblue → skyblue)
-- **Grid Layout** – 4-column responsive grid for shortcuts
-- **Icon Size** – 42×42px icons for clarity
-- **Font Awesome Icons** – For add/delete/close buttons
+- **HTML5, CSS3, JavaScript (Vanilla)**
+- **Chrome API** – Storage & Tabs
+- **Font Awesome 6.7.2** – Icons
 
-## 🚀 Future Enhancements
+## 🚀 What's Coming
 
 - [ ] Categories/Tags for organizing shortcuts
 - [ ] Sync across devices
-- [ ] Custom colors & themes
+- [ ] Custom themes
 - [ ] Keyboard shortcuts
 - [ ] Import/export bookmarks
-- [ ] Dark mode toggle
 - [ ] Search/filter functionality
 
 ## 📝 License
 
-Licensed under the [Apache License 2.0](LICENSE) – feel free to use, modify, and distribute.
+Licensed under the [Apache License 2.0](LICENSE).
 
 ## 🤝 Contributing
 
 Found a bug or have a suggestion? Feel free to open an issue or submit a PR!
 
-## 💡 Tech Stack
+## 💬 Connect
 
-- **HTML5** – Markup
-- **CSS3** – Styling with gradients & flexbox
-- **JavaScript (Vanilla)** – Event handling & DOM manipulation
-- **Chrome API** – Storage & Tabs management
-- **Font Awesome 6.7.2** – Icons
+- **GitHub:** [@Rohan-Shridhar](https://github.com/Rohan-Shridhar)
+- **Twitter:** [@Rohan_Shridhar](https://twitter.com/Rohan_Shridhar)
+- **LinkedIn:** [rohan-mirjankar](https://www.linkedin.com/in/rohan-mirjankar)
+- **DEV.to:** [rohan_mirjankar](https://dev.to/rohan_mirjankar)
 
 ---
 
-Made with ❤️ by [Rohan-Shridhar](https://github.com/Rohan-Shridhar)
-
-**v1.2.0** | Licensed under Apache 2.0
+**Made with ❤️ by Rohan** | v2.0.0
