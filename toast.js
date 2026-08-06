@@ -1,5 +1,5 @@
 function showToast(message, status, duration = 3000){
-    const messages = ['App added to HopTab!', 'App removed from HopTab!', 'Addition not possible'];
+    const messages = ['App added to HopTab!', 'App removed from HopTab!', 'Addition to HopTab not possible'];
     const statuses = ['success', 'failure'];
     const toast = document.getElementById('toast');
 
