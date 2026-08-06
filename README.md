@@ -1,4 +1,5 @@
-# HopTab 🚀
+# HopTab 🚀 
+**`v2.0.0`**
 
 **Jump to your favorite websites and pages instantly from your browser.**
 
@@ -113,4 +114,4 @@ Found a bug or have a suggestion? Feel free to open an issue or submit a PR!
 
 Made with ❤️ by [Rohan-Shridhar](https://github.com/Rohan-Shridhar)
 
-**v1.2.0** | Licensed under Apache 2.0
+Licensed under Apache 2.0
