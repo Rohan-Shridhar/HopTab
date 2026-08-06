@@ -93,6 +93,7 @@ function getAppURL(){
         }else{
             console.log(`Invalid url : ${url}`);
         }
+        showToast(2,1);
         cancelFunction();
         return 42;
     }
