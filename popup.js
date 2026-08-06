@@ -64,20 +64,26 @@ function exeAddApp(){
     getAppURL();
     getAppIcon();
 
-    chrome.storage.local.get(["apps"],(result) => {
-        const apps = result.apps || [];
+    try{
+        chrome.storage.local.get(["apps"],(result) => {
+            const apps = result.apps || [];
 
-        apps.push({
-            url: url,
-            name: name,
-            img: img
-        });
+            apps.push({
+                url: url,
+                name: name,
+                img: img
+            });
 
-        chrome.storage.local.set({apps},() => {
-            addApp(url, name, img);
-            card.hidden = true;
+            chrome.storage.local.set({apps},() => {
+                addApp(url, name, img);
+                card.hidden = true;
+            });
         });
-    });
+        showToast(0,0);
+    }
+    catch{
+        showToast(2,1);
+    }
 }
 function getAppURL(){
     url = document.getElementById("url").value;
