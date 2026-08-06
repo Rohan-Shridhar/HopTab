@@ -68,6 +68,15 @@ function exeAddApp(){
         chrome.storage.local.get(["apps"],(result) => {
             const apps = result.apps || [];
 
+            for(let i=0; i<apps.length; i++){
+                if(apps[i].url === url){
+                    console.log("App already exists");
+                    showToast(1,3);
+                    cancelFunction();
+                    return 42;
+                }
+            }
+
             apps.push({
                 url: url,
                 name: name,
@@ -77,12 +86,12 @@ function exeAddApp(){
             chrome.storage.local.set({apps},() => {
                 addApp(url, name, img);
                 card.hidden = true;
+                showToast(0,0);
             });
         });
-        showToast(0,0);
     }
     catch{
-        showToast(2,1);
+        showToast(1,2);
     }
 }
 function getAppURL(){
@@ -93,7 +102,7 @@ function getAppURL(){
         }else{
             console.log(`Invalid url : ${url}`);
         }
-        showToast(2,1);
+        showToast(1,2);
         cancelFunction();
         return 42;
     }
@@ -174,12 +183,12 @@ function exeDelApp() {
                 document.querySelector(".main").innerHTML = "";
                 loadApps();
                 remove.hidden = true;
+                showToast(0,1);
             });
         });
-        showToast(1,0);
     }
     catch{
-        showToast(2,1);
+        showToast(1,2);
     }
 }
 
