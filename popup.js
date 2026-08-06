@@ -160,20 +160,26 @@ function addApp(url, name, img){
 }
 
 function exeDelApp() {
-    chrome.storage.local.get(["apps"], (result) => {
-        let apps = result.apps || [];
+    try{
+        chrome.storage.local.get(["apps"], (result) => {
+            let apps = result.apps || [];
 
-        const checked = [...document.querySelectorAll("#deletelist input:checked")]
-            .map(cb => Number(cb.value));
+            const checked = [...document.querySelectorAll("#deletelist input:checked")]
+                .map(cb => Number(cb.value));
 
-        apps = apps.filter((_, index) => !checked.includes(index));
+            apps = apps.filter((_, index) => !checked.includes(index));
 
-        chrome.storage.local.set({ apps }, () => {
-            document.querySelector(".main").innerHTML = "";
-            loadApps();
-            remove.hidden = true;
+            chrome.storage.local.set({ apps }, () => {
+                document.querySelector(".main").innerHTML = "";
+                loadApps();
+                remove.hidden = true;
+            });
         });
-    });
+        showToast(1,0);
+    }
+    catch{
+        showToast(2,1);
+    }
 }
 
 function updateTime(){
