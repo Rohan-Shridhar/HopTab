@@ -1,9 +1,11 @@
-# HopTab 🚀 
-**`v2.0.0`**
+<div align="center">
+  <a href="https://rohan-shridhar.github.io/HopTab/"><img src="icons/icon128.png"/></a>
+  <h1>HopTab</h1>
+</div>
 
 **Jump to your favorite websites and pages instantly from your browser.**
 
-A lightweight Chrome extension that lets you save, organize, and quick-access your most-used websites with beautiful favicons—all just one click away.
+HopTab is a lightweight Chrome extension that lets you save, organize, and quick-access your most-used websites with beautiful favicons—all just one click away.
 
 ## ✨ Features
 
