@@ -1,5 +1,10 @@
 <div align="center">
   <a href="https://rohan-shridhar.github.io/HopTab/"><img src="icons/icon128.png"/></a>
+  <h5>
+    <a href="https://rohan-shridhar.github.io/HopTab/" target="_blank">Website</a> |
+    <a href="https://rohan-shridhar.github.io/HopTab/assets/demo.mp4" target="_blank">Video demo</a> |
+    <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank">Repo</a>
+  </h5>
   <h1>HopTab</h1>
 </div>
 
@@ -61,13 +66,23 @@ HopTab is a lightweight Chrome extension that lets you save, organize, and quick
 
 ```
 HopTab/
+├── assets/                # Banners, Logo, Demo video  
+├── icons/                 # Extension icons (16px, 32px, 48px, 128px)
+|
 ├── manifest.json          # Chrome extension configuration
+|
 ├── popup.html             # Extension popup UI
 ├── popup.css              # Styling for the popup
 ├── popup.js               # Extension logic & event handlers
-├── icons/                 # Extension icons (16px, 32px, 48px, 128px)
-├── README.md              # This file
+├── toast.js               # Toast logic defined
+|
+├── index.html             # Landing page html file
+├── style.css              # Styling for landing page
+├── script.js              # Logic and animation for landing page
+|
+├── README.md              # Documentation
 └── LICENSE                # Apache 2.0 License
+
 ```
 
 ## 🔧 Technical Details
