@@ -1,11 +1,11 @@
 <div align="center">
-  <img src="icons/icon128.png"/>
-  <h5>
+  <img src="icons/icon128.png"/>  
+  <h1>HopTab</h1>
+<h5>
     <a href="https://rohan-shridhar.github.io/HopTab/" target="_blank">Website</a> |
     <a href="https://rohan-shridhar.github.io/HopTab/assets/demo.mp4" target="_blank">Video demo</a> |
     <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank">Repo</a>
   </h5>
-  <h1>HopTab</h1>
 </div>
 
 **Jump to your favorite websites and pages instantly from your browser.**
