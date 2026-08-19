@@ -1,6 +1,7 @@
 <div align="center">
   <img src="icons/icon128.png"/>  
-  <h1>HopTab</h1>
+  <h1>HopTab
+<br>
 <h5>
     <a href="https://rohan-shridhar.github.io/HopTab/" target="_blank">Website</a> |
     <a href="https://rohan-shridhar.github.io/HopTab/assets/demo.mp4" target="_blank">Video demo</a> |
