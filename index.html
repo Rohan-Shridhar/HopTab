@@ -3,171 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HopTab - Jump to Your Favorite Websites Instantly</title>
+    <title>HopTab — Jump to Your Favorite Websites Instantly</title>
+    <meta name="description" content="HopTab is a blazing-fast Chrome extension that lets you jump to your favorite websites instantly. No tracking, no cloud, pure speed.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
+
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
             <div class="logo">
-                <img src="icons/icon48.png"/> HopTab
+                <img src="icons/icon48.png" alt="HopTab icon" class="logo-icon"/>
+                <span>HopTab</span>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#demo">Demo</a></li>
                 <li><a href="#install">Install</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank" class="nav-cta">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Jump to Your Favorite Websites<span class="highlight-text"> Instantly</span></h1>
-            <p class="hero-subtitle">Stop losing tabs. Stop scrolling bookmarks. One click. Your websites.</p>
-            
-            <div class="hero-buttons">
-                <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank" class="btn btn-primary">
+    <section class="hero" id="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-inner">
+            <div class="hero-eyebrow">
+                <span class="eyebrow-dot"></span>
+                Chrome Extension &middot; MV3 &middot; Open Source
+            </div>
+            <h1 class="hero-title">
+                Jump to Your<br>
+                <em>Favorite Websites</em><br>
+                Instantly
+            </h1>
+            <p class="hero-desc">
+                Stop losing tabs. Stop scrolling bookmarks.<br>
+                One click. Your websites. Always.
+            </p>
+            <div class="hero-actions">
+                <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank" class="btn-primary-hero">
                     <i class="fab fa-github"></i> Download on GitHub
                 </a>
-                <a href="#demo" class="btn btn-secondary">
-                    <i class="fas fa-play"></i> See Demo
+                <a href="#demo" class="btn-ghost-hero">
+                    <i class="fas fa-play-circle"></i> See Demo
                 </a>
             </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
 
-            <div class="hero-stats">
-                <div class="stat">
-                    <h3>MV3</h3>
-                    <p>Manifest</p>
-                </div>
-                <div class="stat">
-                    <h3>Local</h3>
-                    <p>Storage</p>
-                </div>
-                <div class="stat">
-                    <h3>Private</h3>
-                    <p>No Tracking</p>
-                </div>
+    <!-- Stats Band -->
+    <section class="stats-band">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <span class="stat-num">MV3</span>
+                <span class="stat-label">Manifest Version</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num">Local</span>
+                <span class="stat-label">Storage Only</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num">Zero</span>
+                <span class="stat-label">Tracking</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-num">200+</span>
+                <span class="stat-label">Tech Favicons</span>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">Why You'll Love HopTab</h2>
-            <p class="section-subtitle">Everything you need. Nothing you don't.</p>
-
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-tag">Why HopTab</p>
+                <h2 class="section-title">Everything you need.<br><em>Nothing you don&rsquo;t.</em></h2>
+            </div>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card" data-animate>
+                    <div class="feature-num">01</div>
+                    <div class="feature-icon-wrap">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3>Lightning Fast</h3>
-                    <p>Opens in milliseconds. Zero load time. Pure speed.</p>
+                    <p>Opens in milliseconds. Zero load time. Pure speed. No waiting, ever.</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card" data-animate>
+                    <div class="feature-num">02</div>
+                    <div class="feature-icon-wrap">
                         <i class="fas fa-image"></i>
                     </div>
                     <h3>Smart Favicons</h3>
-                    <p>Automatically detects GitHub, React, Node, Docker, and 200+ tech stacks.</p>
+                    <p>Auto-detects GitHub, React, Node, Docker, and 200+ tech stacks with beautiful icons.</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card" data-animate>
+                    <div class="feature-num">03</div>
+                    <div class="feature-icon-wrap">
                         <i class="fas fa-lock"></i>
                     </div>
                     <h3>Local Storage</h3>
-                    <p>Your bookmarks stay on your machine. No cloud. No sync. No tracking.</p>
+                    <p>Your bookmarks stay on your machine. No cloud. No sync. No tracking. Ever.</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card" data-animate>
+                    <div class="feature-num">04</div>
+                    <div class="feature-icon-wrap">
                         <i class="fas fa-feather"></i>
                     </div>
                     <h3>Zero Dependencies</h3>
-                    <p>Vanilla JavaScript. No frameworks. No bloat. Pure code.</p>
+                    <p>Vanilla JavaScript. No frameworks. No bloat. Just pure, clean code.</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card" data-animate>
+                    <div class="feature-num">05</div>
+                    <div class="feature-icon-wrap">
                         <i class="fas fa-palette"></i>
                     </div>
                     <h3>Beautiful Design</h3>
-                    <p>Clean grid layout. Smooth animations. Just works.</p>
+                    <p>Clean grid layout. Smooth animations. Designed to delight every single time.</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card" data-animate>
+                    <div class="feature-num">06</div>
+                    <div class="feature-icon-wrap">
                         <i class="fas fa-trash-alt"></i>
                     </div>
                     <h3>Bulk Delete</h3>
-                    <p>Remove multiple bookmarks at once with simple checkboxes.</p>
+                    <p>Remove multiple bookmarks at once with simple, elegant checkboxes.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full-Width Marquee Banner -->
+    <section class="banner-divider">
+        <div class="banner-track">
+            <div class="banner-text-scroll">
+                <span>One Click &nbsp;&middot;&nbsp; Zero Wait &nbsp;&middot;&nbsp; Pure Speed &nbsp;&middot;&nbsp; Your Bookmarks &nbsp;&middot;&nbsp; Privacy First &nbsp;&middot;&nbsp; Open Source &nbsp;&middot;&nbsp;</span>
+                <span>One Click &nbsp;&middot;&nbsp; Zero Wait &nbsp;&middot;&nbsp; Pure Speed &nbsp;&middot;&nbsp; Your Bookmarks &nbsp;&middot;&nbsp; Privacy First &nbsp;&middot;&nbsp; Open Source &nbsp;&middot;&nbsp;</span>
+                <span>One Click &nbsp;&middot;&nbsp; Zero Wait &nbsp;&middot;&nbsp; Pure Speed &nbsp;&middot;&nbsp; Your Bookmarks &nbsp;&middot;&nbsp; Privacy First &nbsp;&middot;&nbsp; Open Source &nbsp;&middot;&nbsp;</span>
             </div>
         </div>
     </section>
 
     <!-- Demo Section -->
     <section id="demo" class="demo">
-        <div class="container">
-            <h2 class="section-title">See It In Action</h2>
-            <div class="demo-container">
-                <video src="./assets/video.mp4" alt="HopTab Demo" class="demo-image" controls loop muted autoplay></video>
-                <div class="demo-info">
-                    <h3>Simple. Elegant. Fast.</h3>
-                    <p>Add your favorite websites once. Access them forever. No more lost tabs. No more searching.</p>
-                    <ul class="demo-steps">
-                        <li><strong>Step 1:</strong> Click the HopTab icon</li>
-                        <li><strong>Step 2:</strong> Click "+ ADD"</li>
-                        <li><strong>Step 3:</strong> Enter URL & title</li>
-                        <li><strong>Step 4:</strong> One-click access, forever</li>
-                    </ul>
+        <div class="section-container">
+            <div class="demo-layout">
+                <div class="demo-text" data-animate>
+                    <p class="section-tag">See It In Action</p>
+                    <h2 class="section-title">Simple.<br><em>Elegant.</em><br>Fast.</h2>
+                    <p class="demo-desc">Add your favorite websites once. Access them forever. No more lost tabs. No more searching through hundreds of bookmarks.</p>
+                    <ol class="demo-steps">
+                        <li>
+                            <span class="step-num">01</span>
+                            <div class="step-content">
+                                <strong>Click the HopTab icon</strong>
+                                <p>Find it pinned in your browser toolbar</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-num">02</span>
+                            <div class="step-content">
+                                <strong>Click &ldquo;+ ADD&rdquo;</strong>
+                                <p>A clean, minimal form opens instantly</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-num">03</span>
+                            <div class="step-content">
+                                <strong>Enter URL &amp; title</strong>
+                                <p>Smart favicon detection kicks in automatically</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-num">04</span>
+                            <div class="step-content">
+                                <strong>One-click access, forever</strong>
+                                <p>Your site is always one hop away</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <div class="demo-visual" data-animate>
+                    <div class="demo-video-wrap">
+                        <video src="./assets/video.mp4" class="demo-video" controls loop muted autoplay playsinline></video>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Installation Section -->
+    <!-- Install Section -->
     <section id="install" class="install">
-        <div class="container">
-            <h2 class="section-title">Install in 3 Simple Steps</h2>
-            
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-tag">Get Started</p>
+                <h2 class="section-title">Install in<br><em>3 Simple Steps</em></h2>
+            </div>
             <div class="install-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Clone or Download</h3>
-                    <p>Get the code from GitHub</p>
-                    <code>git clone https://github.com/Rohan-Shridhar/HopTab.git</code>
+                <div class="install-step" data-animate>
+                    <div class="step-header">
+                        <span class="step-index">01</span>
+                        <h3>Clone or Download</h3>
+                    </div>
+                    <p>Get the source code directly from GitHub.</p>
+                    <div class="code-block">
+                        <code>git clone https://github.com/Rohan-Shridhar/HopTab.git</code>
+                        <button class="copy-btn" onclick="copyCode(this)" data-code="git clone https://github.com/Rohan-Shridhar/HopTab.git" title="Copy to clipboard">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
                 </div>
-
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Load as Extension</h3>
-                    <p>Open chrome://extensions and enable Developer Mode</p>
-                    <p>Click "Load unpacked" and select the HopTab folder</p>
+                <div class="install-step" data-animate>
+                    <div class="step-header">
+                        <span class="step-index">02</span>
+                        <h3>Load as Extension</h3>
+                    </div>
+                    <p>Open <strong>chrome://extensions</strong> and enable Developer Mode, then click <strong>&ldquo;Load unpacked&rdquo;</strong> and select the HopTab folder.</p>
                 </div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Start Using</h3>
-                    <p>Click the HopTab icon and start adding your websites!</p>
+                <div class="install-step" data-animate>
+                    <div class="step-header">
+                        <span class="step-index">03</span>
+                        <h3>Start Using</h3>
+                    </div>
+                    <p>Click the HopTab icon in your toolbar and start adding your favorite websites. That&rsquo;s it &mdash; you&rsquo;re ready to hop.</p>
                 </div>
             </div>
-
-            <div class="install-cta">
-                <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank" class="btn btn-primary btn-large">
-                    <i class="fab fa-github"></i> Download Extension
+            <div class="install-cta" data-animate>
+                <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank" class="btn-primary-hero">
+                    <i class="fab fa-github"></i> Download the Extension
                 </a>
             </div>
         </div>
@@ -175,123 +257,102 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-subtitle">Questions, ideas, or found a bug? Reach out or open a GitHub issue.</p>
-
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-tag">Get in Touch</p>
+                <h2 class="section-title">Questions, ideas,<br><em>or found a bug?</em></h2>
+                <p class="section-desc">Reach out or open a GitHub issue. I&rsquo;m always happy to connect.</p>
+            </div>
             <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-github"></i>
+                <a href="https://github.com/Rohan-Shridhar/" target="_blank" class="contact-card" data-animate>
+                    <div class="contact-card-icon"><i class="fab fa-github"></i></div>
+                    <div class="contact-card-body">
+                        <h3>GitHub</h3>
+                        <p>Collaborate, star, or explore other projects</p>
+                        <span class="contact-handle">@Rohan-Shridhar</span>
                     </div>
-                    <h3>GitHub</h3>
-                    <p>Want to collab? Check out my other projects as well</p>
-                    <a href="https://github.com/Rohan-Shridhar/" target="_blank" class="contact-link">
-                        @Rohan-Shridhar
-                    </a>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-linkedin"></i>
+                    <i class="fas fa-arrow-right contact-arrow"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/rohan-mirjankar/" target="_blank" class="contact-card" data-animate>
+                    <div class="contact-card-icon"><i class="fab fa-linkedin"></i></div>
+                    <div class="contact-card-body">
+                        <h3>LinkedIn</h3>
+                        <p>Connect with me professionally</p>
+                        <span class="contact-handle">@Rohan-Mirjankar</span>
                     </div>
-                    <h3>LinkedIn</h3>
-                    <p>Connect with me!</p>
-                    <a href="https://www.linkedin.com/in/rohan-mirjankar/" target="_blank" class="contact-link">
-                        @Rohan-Mirjankar
-                    </a>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-twitter"></i>
+                    <i class="fas fa-arrow-right contact-arrow"></i>
+                </a>
+                <a href="https://twitter.com/Rohan_Shridhar" target="_blank" class="contact-card" data-animate>
+                    <div class="contact-card-icon"><i class="fab fa-twitter"></i></div>
+                    <div class="contact-card-body">
+                        <h3>Twitter</h3>
+                        <p>Follow for updates and new features</p>
+                        <span class="contact-handle">@Rohan_Shridhar</span>
                     </div>
-                    <h3>Twitter</h3>
-                    <p>Follow for updates and new features</p>
-                    <a href="https://twitter.com/Rohan_Shridhar" target="_blank" class="contact-link">
-                        @Rohan_Shridhar
-                    </a>
-                </div>
-<!--
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fab fa-dev"></i>
+                    <i class="fas fa-arrow-right contact-arrow"></i>
+                </a>
+                <a href="mailto:rohansm668@gmail.com" class="contact-card" data-animate>
+                    <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-card-body">
+                        <h3>Email</h3>
+                        <p>Reach out directly for any questions</p>
+                        <span class="contact-handle">Send a message</span>
                     </div>
-                    <h3>DEV.to</h3>
-                    <p>Read how we built this and why</p>
-                    <a href="https://dev.to/rohan_mirjankar" target="_blank" class="contact-link">
-                        Read Articles
-                    </a>
-                </div>
--->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Email</h3>
-                    <p>Reach out directly</p>
-                    <a href="mailto:rohansm668@gmail.com" class="contact-link">
-                        Send Email
-                    </a>
-                </div>
+                    <i class="fas fa-arrow-right contact-arrow"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>HopTab</h4>
-                    <p>Jump to your favorite websites instantly.</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="icons/icon48.png" alt="HopTab icon" class="logo-icon"/>
+                    <span>HopTab</span>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
+                <p>Jump to your favorite websites instantly.<br>Open source. No tracking. Forever free.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rohan-mirjankar" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/Rohan_Shridhar" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://dev.to/rohan_mirjankar" target="_blank" aria-label="Dev.to"><i class="fab fa-dev"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Navigation</h4>
                     <ul>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#demo">Demo</a></li>
                         <li><a href="#install">Install</a></li>
-                        <li><a href="https://github.com/Rohan-Shridhar/HopTab/blob/main/LICENSE" target="_blank">License</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Follow</h4>
-                    <div class="social-links">
-                        <a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/rohan-mirjankar" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://twitter.com/Rohan_Shridhar" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://dev.to/rohan_mirjankar" target="_blank">
-                            <i class="fab fa-dev"></i>
-                        </a>
-                    </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/Rohan-Shridhar/HopTab" target="_blank">GitHub Repo</a></li>
+                        <li><a href="https://github.com/Rohan-Shridhar/HopTab/blob/main/LICENSE" target="_blank">License</a></li>
+                        <li><a href="https://github.com/Rohan-Shridhar/HopTab/issues" target="_blank">Report a Bug</a></li>
+                        <li><a href="https://github.com/Rohan-Shridhar/HopTab/blob/main/CHANGELOG.md" target="_blank">Changelog</a></li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2024 HopTab. Built with <span class="heart">❤️</span> by Rohan. Apache 2.0 License.</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 HopTab &nbsp;&middot;&nbsp; Built with <span class="heart">&#9825;</span> by Rohan &nbsp;&middot;&nbsp; Apache 2.0 License</p>
         </div>
     </footer>
 
     <!-- Success Modal -->
     <div id="successModal" class="modal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="modal-header">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h2>Thank You!</h2>
-            <p>Your bug report has been received. We'll look into it ASAP.</p>
-            <button class="btn btn-primary" onclick="closeModal()">Close</button>
+            <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+            <div class="modal-icon"><i class="fas fa-check-circle"></i></div>
+            <h2>Copied!</h2>
+            <p>Command copied to your clipboard.</p>
         </div>
     </div>
 

@@ -1,127 +1,167 @@
-// ============ HAMBURGER MENU ============
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+// ============================================================
+//  HopTab Landing Page — Script
+//  Redesigned to match b-egg.farm editorial aesthetic
+// ============================================================
 
-if (hamburger) {
+// ---- Navbar: Scroll behaviour ----
+const navbar = document.getElementById('navbar');
+
+function updateNavbar() {
+    if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+}
+
+window.addEventListener('scroll', updateNavbar, { passive: true });
+updateNavbar();
+
+// ---- Hamburger Menu ----
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('navLinks');
+
+if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        hamburger.classList.toggle('active');
+        const isOpen = navLinks.classList.toggle('open');
+        hamburger.classList.toggle('active', isOpen);
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        });
     });
 }
 
-// Close menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.style.display = 'none';
-        hamburger.classList.remove('active');
+// ---- Smooth Scroll with Navbar Offset ----
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const navHeight = navbar.offsetHeight;
+        const offsetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     });
 });
 
-// ============ SMOOTH SCROLL ENHANCEMENTS ============
-// Offset scroll for fixed navbar
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+// ---- Scroll-Triggered Animations ----
+const animatables = document.querySelectorAll('[data-animate]');
 
-        if (target) {
-            const offsetTop = target.offsetTop - 80; // navbar height
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
+const animateObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                // Stagger within same parent
+                const siblings = entry.target.parentElement.querySelectorAll('[data-animate]');
+                let delay = 0;
+                siblings.forEach((sib, idx) => {
+                    if (sib === entry.target) delay = idx * 80;
+                });
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, delay);
+                animateObserver.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+);
+
+animatables.forEach(el => animateObserver.observe(el));
+
+// ---- Active Nav Link on Scroll ----
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+function setActiveNav() {
+    const scrollPos = window.scrollY + navbar.offsetHeight + 80;
+
+    sections.forEach(section => {
+        const top    = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+        const id     = section.getAttribute('id');
+
+        if (scrollPos >= top && scrollPos < bottom) {
+            navAnchors.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
             });
         }
     });
-});
-
-// ============ SCROLL ANIMATIONS ============
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animation = 'slideUp 0.6s ease forwards';
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe feature cards
-document.querySelectorAll('.feature-card').forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.animationDelay = `${index * 0.1}s`;
-    observer.observe(card);
-});
-
-// Observe contact cards
-document.querySelectorAll('.contact-card').forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.animationDelay = `${index * 0.1}s`;
-    observer.observe(card);
-});
-
-// Observe step cards
-document.querySelectorAll('.step').forEach((step, index) => {
-    step.style.opacity = '0';
-    step.style.animationDelay = `${index * 0.1}s`;
-    observer.observe(step);
-});
-
-// ============ FORM VALIDATION ============
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
 }
 
-const emailInput = document.getElementById('bug-email');
-if (emailInput) {
-    emailInput.addEventListener('blur', () => {
-        if (emailInput.value && !validateEmail(emailInput.value)) {
-            emailInput.style.borderColor = '#a8453c';
-            emailInput.style.boxShadow = '0 0 0 3px rgba(168, 69, 60, 0.1)';
-        } else {
-            emailInput.style.borderColor = '#ddd';
-            emailInput.style.boxShadow = 'none';
+window.addEventListener('scroll', setActiveNav, { passive: true });
+
+// ---- Copy Code Button ----
+function copyCode(btn) {
+    const code = btn.getAttribute('data-code') || btn.previousElementSibling?.textContent;
+    if (!code) return;
+
+    navigator.clipboard.writeText(code.trim()).then(() => {
+        const icon = btn.querySelector('i');
+        btn.classList.add('copied');
+        if (icon) {
+            icon.className = 'fas fa-check';
         }
+
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            if (icon) icon.className = 'far fa-copy';
+        }, 2000);
+    }).catch(() => {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = code.trim();
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        const icon = btn.querySelector('i');
+        btn.classList.add('copied');
+        if (icon) icon.className = 'fas fa-check';
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            if (icon) icon.className = 'far fa-copy';
+        }, 2000);
     });
 }
 
-// ============ ACTIVE NAV LINK ============
-window.addEventListener('scroll', () => {
-    let current = '';
+// ---- Modal ----
+function closeModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) modal.classList.remove('open');
+}
 
-    document.querySelectorAll('section').forEach(section => {
-        const sectionTop = section.offsetTop;
-
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
+// Close modal on backdrop click
+const modal = document.getElementById('successModal');
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
     });
+}
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
 });
 
-// ============ CONSOLE EASTER EGG ============
+// ---- Console Easter Egg ----
 console.log(
-    '%cHopTab 🚀',
-    'font-size: 24px; font-weight: bold; color: #a8453c;'
+    '%c HopTab 🚀 ',
+    'font-size: 20px; font-weight: bold; background: #1e2b1e; color: #c8a84b; padding: 8px 16px; border-radius: 4px;'
 );
-
 console.log(
-    '%cThanks for checking out HopTab! Found a bug? Report it on GitHub.',
-    'font-size: 14px; color: #d4a574;'
-);
-
-console.log(
-    '%cGitHub: https://github.com/Rohan-Shridhar/HopTab',
-    'font-size: 12px; color: #e8d4b8;'
+    '%cThanks for checking out HopTab! Star it on GitHub → https://github.com/Rohan-Shridhar/HopTab',
+    'font-size: 13px; color: #5a7a5a; padding: 4px 0;'
 );
